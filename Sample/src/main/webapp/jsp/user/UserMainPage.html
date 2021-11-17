@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UserPage</title>
+<meta charset="ISO-8859-1">
+<style>
+a {
+	text-align: center;
+}
+
+.header {
+	background-color: black;
+	align-self: center;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+button {
+	display: inline;
+	background-color: gray;
+	width: 15%;
+	list-style: none;
+	padding-left: 0px;
+}
+
+button {
+	font-family: serif;
+	font-size: medium;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-radius: 5px;
+	padding-top: 20px;
+}
+
+button:hover {
+	background-color: black;
+	color: white;
+	display: inline;
+}
+
+.container1 {
+	position: inherit;
+	padding: 0px;
+	background-color: gray;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).on('click', '#profile', function() {
+		//alert("profile call");
+		var authId = $("#authId").val();
+		alert(uname);
+	});
+</script>
+</head>
+<body style="background: #e6e6e6; color: black;">
+
+	<div class="header">
+		<h2>
+			<a style="color: white;">MAIN PAGE OF USER</a>
+		</h2>
+		<form action="${pageContext.request.contextPath }/logoutservlet"
+			method="POST">
+			<input type="submit" id="logout" value="logout">
+		</form>
+		<input type="hidden" id="authId" value="<%=session.getAttribute("authId")%>">
+	</div>
+
+	<div class="container1">
+		<form action="${pageContext.request.contextPath }/welcome?"
+			method="POST">
+			<button name="name" value="userHome">Home</button>
+
+			<button name="name" value="getProfileInfo">Profile</button>
+
+			<button name="name" value="userAccountInfo">Account Info</button>
+
+			<button name="name" value="banktransaction">Bank
+				Transactions</button>
+			<button name="name" value="userCashTransaction">Cash
+				Transactions</button>
+			<button name="name" value="userTransactionHistory">View
+				Transactions</button>
+			<button name="name" value="addBeneficiaryPage">Beneficiary</button>
+		</form>
+	</div>
+
+	<div>
+		<h3>
+			<a>My Session ID: <%=session.getId()%></a>
+		</h3>
+	</div>
+
+
+	<div id="addBenefContainer">
+		<h2>Add Beneficiary</h2>
+		<div>
+			<label for="nickName">Nick Name</label> <input id="nickName"
+				type="text" placeholder="Enter NickName">
+
+		</div>
+		<div>
+			<label for="fullName">Account Holder Name</label> <input
+				id="fullName" type="text" placeholder="Enter Full Name">
+
+		</div>
+		<div>
+			<label for="accNo">Account Number</label> <input id="accNo"
+				type="text" placeholder="Enter Account Number">
+
+		</div>
+
+		<div>
+			<label for="branchName">Branch Name</label> <input id="branchName"
+				type="text" placeholder="Enter Branch Name">
+		</div>
+		<div>	
+			<button id="addBenefButton">Add Beneficiary</button>
+		</div>
+	</div>
+
+
+</body>
+</html>

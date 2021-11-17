@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>Sample</display-name>
+	<welcome-file-list>
+		<welcome-file>SignInPage.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- loginservlet -->
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.myWeb.controller.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/loginservlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- Logout Servlet -->
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.myWeb.controller.LogoutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logoutservlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- Main Servlet -->
+	<servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>com.myWeb.controller.WelcomeNew</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>
+
+	<!-- SignIn Auth Filter -->
+	<filter>
+		<filter-name>SiginFilter</filter-name>
+		<filter-class>com.myWeb.controller.SiginFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>SiginFilter</filter-name>
+		<url-pattern>/welcome</url-pattern>
+		<servlet-name>MyServlet</servlet-name>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>SiginFilter</filter-name>
+		<url-pattern>/jsp/user/*</url-pattern>
+		<servlet-name>MyServlet</servlet-name>
+	</filter-mapping>
+	
+	
+</web-app>
